@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Titan Online Banking Application :: Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/toba.css">
+    </head>
+    <body>
+        <header>
+            <h1>Customer Login</h1>
+        </header>
+        <form method="post" action="LoginServlet">
+            <input type="hidden" name="action" value="login">
+            <label for="userName">User Name:</label>
+            <input type="text" name="userName" id="userName">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password">
+            <input type="submit" id="submit" value="Login">
+        </form>
+        <p>
+            <a href="new_customer.jsp">New Customer Sign Up</a>
+        </p>
+    </body>
+</html>
