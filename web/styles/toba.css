@@ -1,0 +1,41 @@
+/* 
+    Created on : Aug 23, 2017, 10:04:55 AM
+    Author     : Benjamin
+*/
+header { text-align: center;
+	padding: 1px; }
+
+nav { text-align: center;
+	font-weight: bold;
+	padding: 0.5em; }
+	
+nav ul { list-style-type: none; }
+
+nav li { display: inline; }
+
+nav a { text-decoration: none;
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 1em;
+	padding: 1em 2em; }
+
+h1, h2, h3 { text-align: center;
+	font-family: Georgia, "Times New Roman", serif; }
+
+p { text-align: center; }
+
+form { padding: 3em 30%; }
+
+label { float: left;
+    display: block;
+    text-align: right;
+    font-weight: bold;
+    width: 10em;
+    padding-right: 1em; }
+
+input { display: block;
+	margin-bottom: 0.5em; }
+
+#submit { margin-left: 45%; }
+
+
