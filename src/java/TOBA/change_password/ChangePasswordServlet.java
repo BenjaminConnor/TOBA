@@ -1,4 +1,9 @@
-package TOBA.login;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package TOBA.change_password;
 
 import TOBA.user.User;
 import java.io.IOException;
@@ -12,8 +17,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author Benjamin
  */
-public class LoginServlet extends HttpServlet {
+public class ChangePasswordServlet extends HttpServlet {
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -40,48 +46,50 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        
-        String url = "/login.jsp";
+        String url = "/password_reset.jsp";
+        String message;
         
         String action = request.getParameter("action");
         if (action == null) {
-            action = "login";
+            action = "change_password";
         }
         
-        if (action.equals("sign_up")) {
-            url = "/new_customer.jsp";
-        }
-        else if (action.equals("login")) {
-            String userName = request.getParameter("userName");
-            String password = request.getParameter("password");
-            
+        if (action.equals("change_password")) {
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
             if (user == null) {
-                if (userName == null || password == null || userName.isEmpty() ||
-                    password.isEmpty() || !userName.equals("jsmith@toba.com")
-                    || !password.equals("letmein")) {
-                url = "/login_failure.jsp";
-                }
-                else {
-                    url = "/account_activity.jsp";
-                }
+                message = "Please register first.";
+            }
+            String newPassword = request.getParameter("new_password");
+
+            if (newPassword == null || newPassword.isEmpty()) {
+                url = "/password_reset.jsp";
+                message = "Please enter a new password.";
             }
             else {
-               if (userName == null || password == null || userName.isEmpty() ||
-                    password.isEmpty() || !userName.equals(user.getUserName())
-                    || !password.equals(user.getPassword())) { //"letmein"
-                url = "/login_failure.jsp";
-                }
-                else {
-                    url = "/account_activity.jsp";
-                } 
+                message = "";
+                url = "/account_activity.jsp";
+                user.setPassword(newPassword);
             }
-                    
+            
+
+            request.setAttribute("user", user);
+            request.setAttribute("message", message);
+            session.setAttribute("user", user);
         }
         getServletContext()
                 .getRequestDispatcher(url)
                 .forward(request, response);
     }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
 }

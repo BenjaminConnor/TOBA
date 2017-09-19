@@ -1,12 +1,12 @@
 package TOBA.new_customer;
 
+import TOBA.user.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import TOBA.user.User;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -49,7 +49,7 @@ public class NewCustomerServlet extends HttpServlet {
         }
         
         if (action.equals("login")) {
-            url = "/login.html";
+            url = "/login.jsp";
         }
         else if (action.equals("sign_up")) {
             
@@ -61,9 +61,14 @@ public class NewCustomerServlet extends HttpServlet {
             String state = request.getParameter("state");
             String zipcode = request.getParameter("zipcode");
             String email = request.getParameter("email");
+            String userName = lastName + zipcode;
+            String password = "welcome1";
             
             User user = new User(firstName, lastName, phone, address, city, state,
-                zipcode, email);
+                zipcode, email, userName, password);
+            
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
             
             String message;
             
@@ -79,7 +84,7 @@ public class NewCustomerServlet extends HttpServlet {
             }
             else {
                 message = "";
-                url = "/success.html";
+                url = "/success.jsp";
             }
             request.setAttribute("user", user);
             request.setAttribute("message", message);
