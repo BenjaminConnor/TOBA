@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import TOBA.data.UserDB;
+
 /**
  *
  * @author Benjamin
@@ -61,15 +63,7 @@ public class NewCustomerServlet extends HttpServlet {
             String state = request.getParameter("state");
             String zipcode = request.getParameter("zipcode");
             String email = request.getParameter("email");
-            String userName = lastName + zipcode;
-            String password = "welcome1";
-            
-            User user = new User(firstName, lastName, phone, address, city, state,
-                zipcode, email, userName, password);
-            
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-            
+               
             String message;
             
             if (firstName == null || lastName == null || phone == null ||
@@ -83,10 +77,25 @@ public class NewCustomerServlet extends HttpServlet {
                 url = "/new_customer.jsp";
             }
             else {
+                User user = new User();
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+                user.setPhone(phone);
+                user.setAddress(address);
+                user.setCity(city);
+                user.setZipcode(zipcode);
+                user.setEmail(email);
+                user.setUserName(lastName + zipcode);
+                user.setPassword("welcome1");
+                
+
                 message = "";
                 url = "/success.jsp";
+                UserDB.insert(user);
+                
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
             }
-            request.setAttribute("user", user);
             request.setAttribute("message", message);
                
         }

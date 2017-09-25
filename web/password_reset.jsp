@@ -19,5 +19,5 @@
     <input type="submit" name="change_password" id="submit" 
            value="Change Password">
 </form>
-<a href="login.jsp">Return to Login Page</a>
+<p><a href="login.jsp">Return to Login Page</a></p>
 <c:import url="/includes/footer.jsp" />

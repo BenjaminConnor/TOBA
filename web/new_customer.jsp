@@ -32,5 +32,5 @@
     <input type="email" name="email" id="email" value="${user.email}">
     <input type="submit" name="Submit" id="submit" value="Submit">
 </form>
-<a href="login.jsp">Return to Login Page</a>        
+<p><a href="login.jsp">Return to Login Page</a></p>        
 <c:import url="/includes/footer.jsp" />

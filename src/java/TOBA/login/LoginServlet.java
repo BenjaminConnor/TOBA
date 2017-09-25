@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
             else {
                if (userName == null || password == null || userName.isEmpty() ||
                     password.isEmpty() || !userName.equals(user.getUserName())
-                    || !password.equals(user.getPassword())) { //"letmein"
+                    || !password.equals(user.getPassword())) { 
                 url = "/login_failure.jsp";
                 }
                 else {

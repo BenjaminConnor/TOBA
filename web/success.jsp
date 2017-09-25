@@ -34,6 +34,6 @@
     <label>Password:</label>
     <span>${user.password}</span><br>
 </form>
-<a href="login.jsp">Return to Login Page</a>
+<p><a href="login.jsp">Return to Login Page</a></p>
 
 <c:import url="/includes/footer.jsp" />

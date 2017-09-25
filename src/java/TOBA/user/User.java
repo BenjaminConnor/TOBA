@@ -6,9 +6,18 @@ package TOBA.user;
  */
 
 import java.io.Serializable;
+import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class User implements Serializable {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
     private String firstName;
     private String lastName;
     private String phone;
@@ -18,34 +27,14 @@ public class User implements Serializable {
     private String zipcode;
     private String email;
     private String userName;
-    private String password;
-    
-    public User() {
-        firstName = "";
-        lastName = "";
-        phone = "";
-        address = "";
-        city = "";
-        state = "";
-        zipcode = "";
-        email = "";
-        userName = "";
-        password = "";
+    private String password;  
+
+    public UUID getId() {
+        return id;
     }
-    
-    public User(String firstName, String lastName, String phone, String address,
-            String city, String state, String zipcode, String email, String userName,
-            String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phone = phone;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zipcode = zipcode;
-        this.email = email;
-        this.userName = userName;
-        this.password = password;
+
+    public void setId(UUID id) {
+        this.id = id;
     }
     
     public String getFirstName() {

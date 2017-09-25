@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TOBA.change_password;
 
 import TOBA.user.User;
@@ -59,6 +54,7 @@ public class ChangePasswordServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
             if (user == null) {
                 message = "Please register first.";
+                url = "/new_customer.jsp";
             }
             String newPassword = request.getParameter("new_password");
 
@@ -72,8 +68,6 @@ public class ChangePasswordServlet extends HttpServlet {
                 user.setPassword(newPassword);
             }
             
-
-            request.setAttribute("user", user);
             request.setAttribute("message", message);
             session.setAttribute("user", user);
         }
