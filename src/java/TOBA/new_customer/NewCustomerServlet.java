@@ -86,12 +86,11 @@ public class NewCustomerServlet extends HttpServlet {
                 user.setZipcode(zipcode);
                 user.setEmail(email);
                 user.setUserName(lastName + zipcode);
-                user.setPassword("welcome1");
                 
-
+                UserDB.insert(user);
                 message = "";
                 url = "/success.jsp";
-                UserDB.insert(user);
+                
                 
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);

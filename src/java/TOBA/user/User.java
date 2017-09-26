@@ -29,6 +29,21 @@ public class User implements Serializable {
     private String userName;
     private String password;  
 
+    public User() {
+        firstName = "";
+        lastName = "";
+        phone = "";
+        address = "";
+        city = "";
+        state = "";
+        zipcode = "";
+        email = "";
+        userName = "";
+        password = "welcome1";
+    }
+    
+    
+
     public UUID getId() {
         return id;
     }
