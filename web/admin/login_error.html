@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin Login Error</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/toba.css" type="text/css"/>
+    </head>
+    <body>
+        <h1>Admin Login Error</h1>
+        <p>Error logging in with the username and password you entered.</p>
+        <p>Please try again.</p>
+        <form action="j_security_check" method="post">
+            <label>Username</label>
+            <input type="text" name="j_username"><br>
+            <label>Password</label>
+            <input type="password" name="j_password"><br>
+            <input type="submit" value="Login" id="submit">    
+        </form>
+    </body>
+</html>

@@ -42,8 +42,6 @@ public class User implements Serializable {
         password = "welcome1";
     }
     
-    
-
     public UUID getId() {
         return id;
     }

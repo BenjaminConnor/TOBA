@@ -17,6 +17,7 @@
         <input type="submit" id="submit" value="Login">
     </form>
     <p>
+        <a href="admin/login.html">Admin Login</a><br>
         <a href="password_reset.jsp">Reset Password</a><br>
         <a href="new_customer.jsp">New Customer Sign Up</a>
     </p>
